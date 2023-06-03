@@ -6,7 +6,7 @@ import {
   HiMagnifyingGlass,
 } from 'react-icons/hi2'
 
-export default function () {
+export default function MobileNavbar() {
   return (
     <nav className='w-full h-[90px] fixed bottom-0 left-0 bg-woodsmoke-950'>
       <Padding height='100%'>

@@ -60,9 +60,9 @@ export default function ClientMovie({ movieDetails }: Props) {
                 </p>
               </div>
 
-              <div className='w-full flex'>
-                <ButtonIconTop text='Rate' icon={<FaHeart />} />
-                <ButtonIconTop text='Share' icon={<FaShare />} />
+              <div className='w-full flex gap-x-8'>
+                <ButtonIconTop text='Rate' icon={<FaHeart size={32} />} />
+                <ButtonIconTop text='Share' icon={<FaShare size={32} />} />
               </div>
             </div>
           </Padding>
