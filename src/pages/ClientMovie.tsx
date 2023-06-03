@@ -3,12 +3,8 @@
 import Button from '@/components/lib/buttons/Button'
 import MobileNavbar from '@/components/navbar/MobileNavbar'
 import Padding from '@/components/responsive/Padding'
-import {
-  backdrop_size,
-  getRecomendationsFrom,
-  getSimilarMoviesFrom,
-} from '@/services/api'
-import { TotalMovieDetails } from '@/types'
+import { backdrop_size } from '@/services/api'
+import { TotalMovieDetails, TotalResultsWithPages } from '@/types'
 import formatRuntime from '@/utils/format-runtime'
 import { Balancer } from 'react-wrap-balancer'
 import { RiHeart3Line, RiShareForwardLine } from 'react-icons/ri'
@@ -19,17 +15,15 @@ import NavBreaker from '@/components/navbar/NavBreaker'
 
 type Props = {
   movieDetails: TotalMovieDetails | undefined
+  similarMovies: TotalResultsWithPages | undefined
+  recomendations: TotalResultsWithPages | undefined
 }
 
-export default async function ClientMovie({ movieDetails }: Props) {
-  let similarMovies
-  let recomendations
-  if (movieDetails?.id) {
-    similarMovies = await getSimilarMoviesFrom(movieDetails.id, 1)
-
-    recomendations = await getRecomendationsFrom(movieDetails.id)
-  }
-
+export default function ClientMovie({
+  movieDetails,
+  recomendations,
+  similarMovies,
+}: Props) {
   return (
     <main className='w-screen h-fit bg-neutral-950'>
       <div>
