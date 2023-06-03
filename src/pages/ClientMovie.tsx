@@ -45,17 +45,21 @@ export default function ClientMovie({ movieDetails }: Props) {
                 </span>
               </div>
 
-              <Button
-                style={{ marginBottom: '16px' }}
-                text='Save'
-                icon={{
-                  asset: <FaBookmark size={16} />,
-                  position: 'left',
-                }}
-              />
+              <div className='mb-4'>
+                <Button
+                  style={{
+                    height: '50px',
+                  }}
+                  text='Save'
+                  icon={{
+                    asset: <FaBookmark size={16} />,
+                    position: 'left',
+                  }}
+                />
+              </div>
 
               <div className='mb-4'>
-                <p>
+                <p className='text-zinc-200'>
                   <Balancer>{movieDetails?.overview}</Balancer>
                 </p>
               </div>
