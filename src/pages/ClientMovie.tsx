@@ -7,7 +7,7 @@ import { backdrop_size } from '@/services/api'
 import { TotalMovieDetails } from '@/types'
 import formatRuntime from '@/utils/format-runtime'
 import { Balancer } from 'react-wrap-balancer'
-import { FaShare, FaHeart } from 'react-icons/fa'
+import { RiHeart3Line, RiShareForwardFill } from 'react-icons/ri'
 import ButtonIconTop from '@/components/lib/buttons/ButtonIconTop'
 
 type Props = {
@@ -68,8 +68,11 @@ export default function ClientMovie({ movieDetails }: Props) {
               </div>
 
               <div className='w-full flex gap-x-8 justify-around'>
-                <ButtonIconTop text='Rate' icon={<FaHeart size={32} />} />
-                <ButtonIconTop text='Share' icon={<FaShare size={32} />} />
+                <ButtonIconTop text='Rate' icon={<RiHeart3Line size={24} />} />
+                <ButtonIconTop
+                  text='Share'
+                  icon={<RiShareForwardFill size={24} />}
+                />
               </div>
             </div>
           </Padding>

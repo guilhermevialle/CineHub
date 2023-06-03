@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 
+import ButtonIconTop from '@/components/lib/buttons/ButtonIconTop'
 import Row from '@/components/movie/Row'
 import MobileNavbar from '@/components/navbar/MobileNavbar'
 import NavBreaker from '@/components/navbar/NavBreaker'
 import Padding from '@/components/responsive/Padding'
 import { TotalResultsWithPages } from '@/types'
 import Balancer from 'react-wrap-balancer'
+import { RiAddLine, RiInformationLine } from 'react-icons/ri'
 
 type Props = {
   PopularMovies?: TotalResultsWithPages | null | undefined
@@ -53,10 +55,9 @@ export default function ClientHome({
             </div>
           </div>
         </Padding>
-        <div className='w-full bg-black h-24 text-white flex items-center justify-center gap-x-10'>
-          <button>my list</button>
-          <button>play</button>
-          <button>info</button>
+        <div className='w-full bg-black h-24 text-white flex items-center justify-center gap-x-16'>
+          <ButtonIconTop text='Save' icon={<RiAddLine size={24} />} />
+          <ButtonIconTop text='Save' icon={<RiInformationLine size={24} />} />
         </div>
       </div>
 

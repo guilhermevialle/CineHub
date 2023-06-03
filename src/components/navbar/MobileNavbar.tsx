@@ -1,30 +1,30 @@
 import ButtonIconTop from '../lib/buttons/ButtonIconTop'
 import Padding from '../responsive/Padding'
 import {
-  HiHome,
-  HiBookmark,
-  HiCog6Tooth,
-  HiMagnifyingGlass,
-} from 'react-icons/hi2'
+  RiHomeLine,
+  RiBookmarkLine,
+  RiSettings2Line,
+  RiSearchLine,
+} from 'react-icons/ri'
 
 const navButtons = [
   {
-    icon: <HiHome size={22} />,
+    icon: <RiHomeLine size={22} />,
     text: 'Home',
     width: '25%',
   },
   {
-    icon: <HiBookmark size={22} />,
+    icon: <RiBookmarkLine size={22} />,
     text: 'Saves',
     width: '25%',
   },
   {
-    icon: <HiCog6Tooth size={22} />,
+    icon: <RiSettings2Line size={22} />,
     text: 'Explore',
     width: '25%',
   },
   {
-    icon: <HiMagnifyingGlass size={22} />,
+    icon: <RiSearchLine size={22} />,
     text: 'Config',
     width: '25%',
   },
