@@ -1,10 +1,23 @@
+/* eslint-disable @next/next/no-img-element */
+
 import Row from '@/components/movie/Row'
 import MobileNavbar from '@/components/navbar/MobileNavbar'
 import NavBreaker from '@/components/navbar/NavBreaker'
 import Padding from '@/components/responsive/Padding'
+import { TotalResultsWithPages } from '@/types'
 import Balancer from 'react-wrap-balancer'
 
-export default function ClientHome() {
+type Props = {
+  PopularMovies?: TotalResultsWithPages | null | undefined
+  TopRatedMovies?: TotalResultsWithPages | null | undefined
+  UpcomingMovies?: TotalResultsWithPages | null | undefined
+}
+
+export default function ClientHome({
+  PopularMovies,
+  TopRatedMovies,
+  UpcomingMovies,
+}: Props) {
   const banner = 'https://wallpapercave.com/wp/wp4152026.jpg'
 
   return (
@@ -48,9 +61,10 @@ export default function ClientHome() {
       </div>
 
       <div className='w-full h-32'></div>
-      <div className='space-y-6'>
-        <Row />
-        <Row />
+      <div className='space-y-7'>
+        <Row title='Popular movies' totalResultsWithPages={PopularMovies} />
+        <Row title='Top rated movies' totalResultsWithPages={TopRatedMovies} />
+        <Row title='Upcoming' totalResultsWithPages={UpcomingMovies} />
       </div>
 
       <NavBreaker />

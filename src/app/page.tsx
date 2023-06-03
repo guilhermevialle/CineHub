@@ -1,8 +1,20 @@
 import ClientHome from '@/pages/ClientHome'
-import { getPopularMovies } from '@/services/api'
+import {
+  getPopularMovies,
+  getTopRatedMovies,
+  getUpcomingMovies,
+} from '@/services/api'
 
 export default async function ServerHome() {
-  const data = await getPopularMovies(1)
+  const popularMovies = await getPopularMovies(1)
+  const topRatedMovies = await getTopRatedMovies(1)
+  const upcomingMovies = await getUpcomingMovies(1)
 
-  return <ClientHome />
+  return (
+    <ClientHome
+      PopularMovies={popularMovies}
+      TopRatedMovies={topRatedMovies}
+      UpcomingMovies={upcomingMovies}
+    />
+  )
 }

@@ -1,14 +1,16 @@
+import { Result } from '@/types'
 import Card from './Card'
 
-export default function Slider() {
+type Props = {
+  results: Result[] | undefined
+}
+
+export default function Slider({ results }: Props) {
   return (
-    <div className='flex gap-x-2 overflow-x-auto'>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+    <div className='flex h-fit gap-x-2  overflow-y-hidden overflow-x-auto'>
+      {results?.map((result) => {
+        return <Card key={result.id} result={result} />
+      })}
     </div>
   )
 }

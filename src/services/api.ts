@@ -1,8 +1,11 @@
+import { TotalMovieDetails, TotalResultsWithPages } from '@/types'
 import axios from 'axios'
-import { headers } from 'next/dist/client/components/headers'
 
 const token =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTM3YzAzMjFhMWQ0NzI4ZTA5ZTI3YjEyODczNjIxNSIsInN1YiI6IjYwMmJmNzY0NjNkOTM3MDAzZmNmMDZmZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9xSWO2XlL-RmjClEN4U_6xRH8u57ZDYqWOH9pyxKrYM'
+
+export const poster_size = 'https://image.tmdb.org/t/p/w500'
+export const backdrop_size = 'https://image.tmdb.org/t/p/w1280'
 
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
@@ -12,33 +15,54 @@ const api = axios.create({
   },
 })
 
-export async function getPopularMovies(page: number = 1) {
+export async function getPopularMovies(
+  page: number = 1
+): Promise<TotalResultsWithPages | undefined> {
   try {
-    const { data } = await api.get(`/movie/popular?language=en-US&page=${page}`)
+    const { data }: { data: TotalResultsWithPages } = await api.get(
+      `/movie/popular?language=en-US&page=${page}`
+    )
     return data
   } catch (error) {
-    return null
+    return undefined
   }
 }
 
-export async function getTopRatedMovies(page: number = 1) {
+export async function getTopRatedMovies(
+  page: number = 1
+): Promise<TotalResultsWithPages | undefined> {
   try {
-    const { data } = await api.get(
+    const { data }: { data: TotalResultsWithPages } = await api.get(
       `/movie/top_rated?language=en-US&page=${page}`
     )
     return data
   } catch (error) {
-    return null
+    return undefined
   }
 }
 
-export async function getUpcomingMovies(page: number = 1) {
+export async function getUpcomingMovies(
+  page: number = 1
+): Promise<TotalResultsWithPages | undefined> {
   try {
-    const { data } = await api.get(
+    const { data }: { data: TotalResultsWithPages } = await api.get(
       `/movie/upcoming?language=en-US&page=${page}`
     )
     return data
   } catch (error) {
-    return null
+    return undefined
+  }
+}
+
+export async function findUniqueMovie(
+  id: number
+): Promise<TotalMovieDetails | undefined> {
+  try {
+    const { data }: { data: TotalMovieDetails } = await api.get(
+      `/movie/${id}?external_source=imdb_id`
+    )
+    return data
+  } catch (error) {
+    return undefined
   }
 }
