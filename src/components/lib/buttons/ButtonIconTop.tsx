@@ -12,7 +12,7 @@ export default function ButtonIconTop({ text, icon, ...rest }: Props) {
       className='flex items-center flex-col gap-y-1 text-neutral-400'
     >
       {icon}
-      <p className='text-[0.8rem] font-normal'>{text}</p>
+      <p className='text-[0.7rem] font-normal'>{text}</p>
     </button>
   )
 }
