@@ -85,7 +85,7 @@ export default async function ClientMovie({ movieDetails }: Props) {
                 </span>
               </div>
 
-              <div className='mb-4'>
+              <div className='my-6'>
                 <Button
                   style={{
                     height: '50px',

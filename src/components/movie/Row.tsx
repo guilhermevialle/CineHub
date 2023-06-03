@@ -8,12 +8,19 @@ type Props = {
 }
 
 export default function Row({ title, totalResultsWithPages }: Props) {
-  return (
-    <div className='w-full'>
-      <Padding>
-        <h1 className='text-white text-2xl mb-2 font-bold'>{title}</h1>
-        <Slider results={totalResultsWithPages?.results} />
-      </Padding>
-    </div>
-  )
+  if (
+    totalResultsWithPages?.results &&
+    totalResultsWithPages.results.length > 0
+  ) {
+    return (
+      <div className='w-full'>
+        <Padding>
+          <h1 className='text-white text-2xl mb-2 font-bold'>{title}</h1>
+          <Slider results={totalResultsWithPages.results} />
+        </Padding>
+      </div>
+    )
+  } else {
+    return null
+  }
 }
