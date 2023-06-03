@@ -8,6 +8,11 @@ import Padding from '@/components/responsive/Padding'
 import { TotalResultsWithPages } from '@/types'
 import Balancer from 'react-wrap-balancer'
 import { RiAddLine, RiInformationLine } from 'react-icons/ri'
+import {
+  getPopularMovies,
+  getTopRatedMovies,
+  getUpcomingMovies,
+} from '@/services/api'
 
 type Props = {
   PopularMovies?: TotalResultsWithPages | undefined
@@ -67,10 +72,26 @@ export default function ClientHome({
 
       <div className='w-full h-32'></div>
       <div className='space-y-7'>
-        <Row title='Popular movies' totalResultsWithPages={PopularMovies} />
-        <Row title='Top rated movies' totalResultsWithPages={TopRatedMovies} />
-        <Row title='Upcoming' totalResultsWithPages={UpcomingMovies} />
-        <Row title='Trending' totalResultsWithPages={TrendingMovies} />
+        <Row
+          queryKey='popularMovies'
+          title='Popular movies'
+          totalResultsWithPages={PopularMovies}
+        />
+        <Row
+          title='Top rated movies'
+          queryKey='topRatedMovies'
+          totalResultsWithPages={TopRatedMovies}
+        />
+        <Row
+          queryKey='upcomingMovies'
+          title='Upcoming'
+          totalResultsWithPages={UpcomingMovies}
+        />
+        <Row
+          queryKey='trending'
+          title='Trending'
+          totalResultsWithPages={TrendingMovies}
+        />
       </div>
 
       <NavBreaker />

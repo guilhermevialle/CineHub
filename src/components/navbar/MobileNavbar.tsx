@@ -31,13 +31,13 @@ export default function MobileNavbar() {
       width: '25%',
     },
     {
-      icon: <RiSettings2Line size={22} />,
+      icon: <RiSearchLine size={22} />,
       text: 'Explore',
       width: '25%',
     },
     {
-      icon: <RiSearchLine size={22} />,
-      text: 'Config',
+      icon: <RiSettings2Line size={22} />,
+      text: 'Preferences',
       width: '25%',
     },
   ]
