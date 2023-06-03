@@ -38,6 +38,7 @@ export default function MobileNavbar() {
           {navButtons.map((bt) => {
             return (
               <ButtonIconTop
+                key={bt.text}
                 text={bt.text}
                 icon={bt.icon}
                 style={{ width: bt.width }}
