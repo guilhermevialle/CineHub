@@ -10,6 +10,6 @@ type Props = {
 export default async function ServerMovie({ params }: Props) {
   const { id } = params
   const movieDetails = await findUniqueMovie(Number(id))
-  /* @ts-expect-error Server Component */
+  //@ts-ignore
   return <ClientMovie movieDetails={movieDetails} />
 }

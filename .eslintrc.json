@@ -1,6 +1,3 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "@typescript-eslint/prefer-ts-expect-error": "error"
-  }
+  "extends": "next/core-web-vitals"
 }
