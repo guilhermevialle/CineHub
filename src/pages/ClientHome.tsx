@@ -45,10 +45,12 @@ export default function ClientHome({
                 <span>1h37min</span>
               </div>
               <div className='text-neutral-300 mb-2'>
-                <p>
+                <p className='text-sm text-zinc-300'>
                   <Balancer>
-                    Lorem ipsum dolor, sit amet cons ectetur adipi sicing elit.
-                    Ad oditusc ipit temporibus repellat laborum.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Dolor neque rerum tempora eveniet minima debitis. Accusamus
+                    dolorum impedit et ad eveniet cupiditate, quidem, laboriosam
+                    vitae facilis culpa, nobis architecto quod!
                   </Balancer>
                 </p>
               </div>

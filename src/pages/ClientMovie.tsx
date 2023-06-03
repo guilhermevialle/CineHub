@@ -50,6 +50,23 @@ export default function ClientMovie({ movieDetails }: Props) {
                   {movieDetails?.runtime &&
                     formatRuntime(movieDetails?.runtime)}
                 </span>
+
+                <span
+                  className={`w-fit text-[15px] px-1.5 rounded text-black font-bold ${
+                    movieDetails?.vote_average &&
+                    movieDetails?.vote_average >= 7
+                      ? 'bg-green-400'
+                      : movieDetails?.vote_average &&
+                        movieDetails?.vote_average >= 5
+                      ? 'bg-yellow-400'
+                      : 'bg-red-400'
+                  }`}
+                >
+                  {(
+                    movieDetails?.vote_average &&
+                    movieDetails?.vote_average * 10
+                  )?.toFixed(0)}
+                </span>
               </div>
 
               <div className='mb-4'>
@@ -62,8 +79,24 @@ export default function ClientMovie({ movieDetails }: Props) {
               </div>
 
               <div className='mb-6'>
-                <p className='text-sm text-zinc-200'>
+                <p className='text-sm text-zinc-200 mb-2'>
                   <Balancer>{movieDetails?.overview}</Balancer>
+                </p>
+
+                <p className='font-semibold text-sm text-neutral-400'>
+                  {movieDetails?.genres.map((genre, index) => {
+                    return (
+                      <span>
+                        <Balancer>
+                          {index < 1 ? (
+                            <span>{genre.name}</span>
+                          ) : (
+                            <span>, {genre.name}</span>
+                          )}
+                        </Balancer>
+                      </span>
+                    )
+                  })}
                 </p>
               </div>
 
