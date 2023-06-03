@@ -68,11 +68,12 @@ export async function findUniqueMovie(
 }
 
 export async function getSimilarMoviesFrom(
-  id: number
+  id: number,
+  page: number = 1
 ): Promise<TotalResultsWithPages | undefined> {
   try {
     const { data }: { data: TotalResultsWithPages } = await api.get(
-      `/movie/${id}/similar`
+      `/movie/${id}/similar?&page=${page}`
     )
     return data
   } catch (error) {
@@ -81,11 +82,26 @@ export async function getSimilarMoviesFrom(
 }
 
 export async function getRecomendationsFrom(
-  id: number
+  id: number,
+  page: number = 1
 ): Promise<TotalResultsWithPages | undefined> {
   try {
     const { data }: { data: TotalResultsWithPages } = await api.get(
-      `/movie/${id}/recommendations`
+      `/movie/${id}/recommendations?&page=${page}`
+    )
+    return data
+  } catch (error) {
+    return undefined
+  }
+}
+
+export async function getTrendingMovies(
+  time: 'week' | 'day',
+  page: number = 1
+): Promise<TotalResultsWithPages | undefined> {
+  try {
+    const { data }: { data: TotalResultsWithPages } = await api.get(
+      `/trending/movie/${time}?&page=${page}`
     )
     return data
   } catch (error) {

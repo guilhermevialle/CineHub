@@ -25,7 +25,7 @@ export default async function ClientMovie({ movieDetails }: Props) {
   let similarMovies
   let recomendations
   if (movieDetails?.id) {
-    similarMovies = await getSimilarMoviesFrom(movieDetails.id)
+    similarMovies = await getSimilarMoviesFrom(movieDetails.id, 1)
 
     recomendations = await getRecomendationsFrom(movieDetails.id)
   }

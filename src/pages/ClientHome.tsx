@@ -10,15 +10,17 @@ import Balancer from 'react-wrap-balancer'
 import { RiAddLine, RiInformationLine } from 'react-icons/ri'
 
 type Props = {
-  PopularMovies?: TotalResultsWithPages | null | undefined
-  TopRatedMovies?: TotalResultsWithPages | null | undefined
-  UpcomingMovies?: TotalResultsWithPages | null | undefined
+  PopularMovies?: TotalResultsWithPages | undefined
+  TopRatedMovies?: TotalResultsWithPages | undefined
+  UpcomingMovies?: TotalResultsWithPages | undefined
+  TrendingMovies?: TotalResultsWithPages | undefined
 }
 
 export default function ClientHome({
   PopularMovies,
   TopRatedMovies,
   UpcomingMovies,
+  TrendingMovies,
 }: Props) {
   const banner = 'https://wallpapercave.com/wp/wp4152026.jpg'
 
@@ -68,6 +70,7 @@ export default function ClientHome({
         <Row title='Popular movies' totalResultsWithPages={PopularMovies} />
         <Row title='Top rated movies' totalResultsWithPages={TopRatedMovies} />
         <Row title='Upcoming' totalResultsWithPages={UpcomingMovies} />
+        <Row title='Trending' totalResultsWithPages={TrendingMovies} />
       </div>
 
       <NavBreaker />
