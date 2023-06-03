@@ -9,22 +9,22 @@ import {
 
 const navButtons = [
   {
-    icon: <HiHome size={26} />,
+    icon: <HiHome size={22} />,
     text: 'Home',
     width: '25%',
   },
   {
-    icon: <HiBookmark size={26} />,
+    icon: <HiBookmark size={22} />,
     text: 'Saves',
     width: '25%',
   },
   {
-    icon: <HiCog6Tooth size={26} />,
+    icon: <HiCog6Tooth size={22} />,
     text: 'Explore',
     width: '25%',
   },
   {
-    icon: <HiMagnifyingGlass size={26} />,
+    icon: <HiMagnifyingGlass size={22} />,
     text: 'Config',
     width: '25%',
   },

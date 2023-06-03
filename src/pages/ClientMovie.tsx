@@ -25,7 +25,7 @@ export default function ClientMovie({ movieDetails }: Props) {
         <div className='text-white w-full h-fit'>
           <Padding>
             <div className='w-full h-full'>
-              <h1 className='w-full text-4xl font-bold mt-2 mb-4'>
+              <h1 className='w-full text-4xl font-bold mt-3 mb-4'>
                 <Balancer>{movieDetails?.title}</Balancer>
               </h1>
 
@@ -51,15 +51,11 @@ export default function ClientMovie({ movieDetails }: Props) {
                     height: '50px',
                   }}
                   text='Save'
-                  icon={{
-                    asset: <FaBookmark size={16} />,
-                    position: 'left',
-                  }}
                 />
               </div>
 
               <div className='mb-4'>
-                <p className='text-zinc-200'>
+                <p className='text-[15px] text-zinc-200'>
                   <Balancer>{movieDetails?.overview}</Balancer>
                 </p>
               </div>
