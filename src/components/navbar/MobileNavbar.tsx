@@ -1,3 +1,6 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
 import ButtonIconTop from '../lib/buttons/ButtonIconTop'
 import Padding from '../responsive/Padding'
 import {
@@ -6,31 +9,39 @@ import {
   RiSettings2Line,
   RiSearchLine,
 } from 'react-icons/ri'
+import { useState } from 'react'
 
-const navButtons = [
-  {
-    icon: <RiHomeLine size={22} />,
-    text: 'Home',
-    width: '25%',
-  },
-  {
-    icon: <RiBookmarkLine size={22} />,
-    text: 'Saves',
-    width: '25%',
-  },
-  {
-    icon: <RiSettings2Line size={22} />,
-    text: 'Explore',
-    width: '25%',
-  },
-  {
-    icon: <RiSearchLine size={22} />,
-    text: 'Config',
-    width: '25%',
-  },
-]
+type NavButtonOption = 'Home' | 'Saves' | 'Explore' | 'Config'
 
 export default function MobileNavbar() {
+  const router = useRouter()
+  const [activeNavButton, setActiveNavButton] =
+    useState<NavButtonOption>('Home')
+
+  const navButtons = [
+    {
+      icon: <RiHomeLine size={22} />,
+      text: 'Home',
+      width: '25%',
+      click: () => router.push(`/`),
+    },
+    {
+      icon: <RiBookmarkLine size={22} />,
+      text: 'Saves',
+      width: '25%',
+    },
+    {
+      icon: <RiSettings2Line size={22} />,
+      text: 'Explore',
+      width: '25%',
+    },
+    {
+      icon: <RiSearchLine size={22} />,
+      text: 'Config',
+      width: '25%',
+    },
+  ]
+
   return (
     <nav className='w-full h-[90px] fixed bottom-0 left-0 bg-woodsmoke-950'>
       <Padding height='100%'>
@@ -39,7 +50,12 @@ export default function MobileNavbar() {
             return (
               <ButtonIconTop
                 key={bt.text}
+                onClick={() => {
+                  setActiveNavButton(() => bt.text as NavButtonOption)
+                  bt.click && bt.click()
+                }}
                 text={bt.text}
+                active={activeNavButton == bt.text}
                 icon={bt.icon}
                 style={{ width: bt.width }}
               />
