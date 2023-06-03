@@ -123,10 +123,12 @@ export default function ClientMovie({
 
             <div className='space-y-6'>
               <Row
+                queryKey='similarMovies'
                 title='Similar movies'
                 totalResultsWithPages={similarMovies}
               />
               <Row
+                queryKey='recomendations'
                 title='Recomendations'
                 totalResultsWithPages={recomendations}
               />

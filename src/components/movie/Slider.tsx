@@ -41,11 +41,24 @@ const queryFunctions = [
     key: 'upcomingMovies',
     function: getUpcomingMovies,
   },
+  {
+    key: 'similarMovies',
+    function: getSimilarMoviesFrom,
+  },
+  {
+    key: 'recomendations',
+    function: getRecomendationsFrom,
+  },
 ]
 
 function Slider({ results, queryKey }: Props) {
   const [end, setEnd] = useState<boolean>(false)
   let fetchRowData: (page: number) => Promise<TotalResultsWithPages | undefined>
+
+  let fetchRowDataFromMovie: (
+    id: number,
+    page: number
+  ) => Promise<TotalResultsWithPages | undefined>
 
   queryFunctions.find((opt) => {
     if (opt.key == queryKey) {
