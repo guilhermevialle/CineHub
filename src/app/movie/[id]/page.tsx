@@ -11,5 +11,6 @@ export default async function ServerMovie({ params }: Props) {
   const { id } = params
   const movieDetails = await findUniqueMovie(Number(id))
 
+  // @ts-expect-error Async Component
   return <ClientMovie movieDetails={movieDetails} />
 }

@@ -66,3 +66,29 @@ export async function findUniqueMovie(
     return undefined
   }
 }
+
+export async function getSimilarMoviesFrom(
+  id: number
+): Promise<TotalResultsWithPages | undefined> {
+  try {
+    const { data }: { data: TotalResultsWithPages } = await api.get(
+      `/movie/${id}/similar`
+    )
+    return data
+  } catch (error) {
+    return undefined
+  }
+}
+
+export async function getRecomendationsFrom(
+  id: number
+): Promise<TotalResultsWithPages | undefined> {
+  try {
+    const { data }: { data: TotalResultsWithPages } = await api.get(
+      `/movie/${id}/recommendations`
+    )
+    return data
+  } catch (error) {
+    return undefined
+  }
+}

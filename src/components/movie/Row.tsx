@@ -4,7 +4,7 @@ import Slider from './Slider'
 
 type Props = {
   title: string
-  totalResultsWithPages: TotalResultsWithPages | null | undefined
+  totalResultsWithPages: TotalResultsWithPages | undefined
 }
 
 export default function Row({ title, totalResultsWithPages }: Props) {

@@ -3,21 +3,35 @@
 import Button from '@/components/lib/buttons/Button'
 import MobileNavbar from '@/components/navbar/MobileNavbar'
 import Padding from '@/components/responsive/Padding'
-import { backdrop_size } from '@/services/api'
+import {
+  backdrop_size,
+  getRecomendationsFrom,
+  getSimilarMoviesFrom,
+} from '@/services/api'
 import { TotalMovieDetails } from '@/types'
 import formatRuntime from '@/utils/format-runtime'
 import { Balancer } from 'react-wrap-balancer'
-import { RiHeart3Line, RiShareForwardFill } from 'react-icons/ri'
+import { RiHeart3Line, RiShareForwardLine } from 'react-icons/ri'
 import ButtonIconTop from '@/components/lib/buttons/ButtonIconTop'
 import { AiOutlineVerticalAlignMiddle } from 'react-icons/ai'
+import Row from '@/components/movie/Row'
+import NavBreaker from '@/components/navbar/NavBreaker'
 
 type Props = {
   movieDetails: TotalMovieDetails | undefined
 }
 
-export default function ClientMovie({ movieDetails }: Props) {
+export default async function ClientMovie({ movieDetails }: Props) {
+  let similarMovies
+  let recomendations
+  if (movieDetails?.id) {
+    similarMovies = await getSimilarMoviesFrom(movieDetails.id)
+
+    recomendations = await getRecomendationsFrom(movieDetails.id)
+  }
+
   return (
-    <main className='w-screen h-screen bg-neutral-950'>
+    <main className='w-screen h-fit bg-neutral-950'>
       <div>
         <img
           className='w-full h-64 object-cover'
@@ -106,10 +120,24 @@ export default function ClientMovie({ movieDetails }: Props) {
                 <ButtonIconTop text='Rate' icon={<RiHeart3Line size={24} />} />
                 <ButtonIconTop
                   text='Share'
-                  icon={<RiShareForwardFill size={24} />}
+                  icon={<RiShareForwardLine size={24} />}
                 />
               </div>
             </div>
+
+            <div className='mt-10'></div>
+
+            <div className='space-y-6'>
+              <Row
+                title='Similar movies'
+                totalResultsWithPages={similarMovies}
+              />
+              <Row
+                title='Recomendations'
+                totalResultsWithPages={recomendations}
+              />
+            </div>
+            <NavBreaker />
           </Padding>
         </div>
       </div>
