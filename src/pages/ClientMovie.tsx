@@ -9,6 +9,7 @@ import formatRuntime from '@/utils/format-runtime'
 import { Balancer } from 'react-wrap-balancer'
 import { RiHeart3Line, RiShareForwardFill } from 'react-icons/ri'
 import ButtonIconTop from '@/components/lib/buttons/ButtonIconTop'
+import { AiOutlineVerticalAlignMiddle } from 'react-icons/ai'
 
 type Props = {
   movieDetails: TotalMovieDetails | undefined
@@ -52,7 +53,7 @@ export default function ClientMovie({ movieDetails }: Props) {
                 </span>
 
                 <span
-                  className={`w-fit text-[15px] px-1.5 rounded text-black font-bold ${
+                  className={`w-fit text-[15px] px-1.5 rounded text-black font-bold flex items-center gap-x-1.5 ${
                     movieDetails?.vote_average &&
                     movieDetails?.vote_average >= 7
                       ? 'bg-green-400'
@@ -62,6 +63,7 @@ export default function ClientMovie({ movieDetails }: Props) {
                       : 'bg-red-400'
                   }`}
                 >
+                  <AiOutlineVerticalAlignMiddle />
                   {(
                     movieDetails?.vote_average &&
                     movieDetails?.vote_average * 10
@@ -86,7 +88,7 @@ export default function ClientMovie({ movieDetails }: Props) {
                 <p className='font-semibold text-sm text-neutral-400'>
                   {movieDetails?.genres.map((genre, index) => {
                     return (
-                      <span>
+                      <span key={genre.id + genre.name}>
                         <Balancer>
                           {index < 1 ? (
                             <span>{genre.name}</span>
