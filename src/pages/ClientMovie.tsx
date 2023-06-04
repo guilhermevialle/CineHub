@@ -1,9 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 
+'use client'
+
 import Button from '@/components/lib/buttons/Button'
 import MobileNavbar from '@/components/navbar/MobileNavbar'
 import Padding from '@/components/responsive/Padding'
-import { backdrop_size } from '@/services/api'
+import {
+  backdrop_size,
+  getRecomendationsFrom,
+  getSimilarMoviesFrom,
+} from '@/services/api'
 import { TotalMovieDetails, TotalResultsWithPages } from '@/types'
 import formatRuntime from '@/utils/format-runtime'
 import { Balancer } from 'react-wrap-balancer'
@@ -24,6 +30,20 @@ export default function ClientMovie({
   recomendations,
   similarMovies,
 }: Props) {
+  const getSimilarMoviesInterceptor = async (page: number) => {
+    if (movieDetails?.id) {
+      return await getSimilarMoviesFrom(movieDetails?.id, page)
+    } else {
+      return undefined
+    }
+  }
+
+  const getRecomendationsInterceptor = async (page: number) => {
+    if (movieDetails?.id) {
+      return await getRecomendationsFrom(movieDetails?.id, page)
+    }
+  }
+
   return (
     <main className='w-screen h-fit bg-neutral-950'>
       <div>
@@ -123,11 +143,13 @@ export default function ClientMovie({
 
             <div className='space-y-6'>
               <Row
+                interceptorFunction={getSimilarMoviesInterceptor}
                 queryKey='similarMovies'
                 title='Similar movies'
                 totalResultsWithPages={similarMovies}
               />
               <Row
+                interceptorFunction={getRecomendationsInterceptor}
                 queryKey='recomendations'
                 title='Recomendations'
                 totalResultsWithPages={recomendations}

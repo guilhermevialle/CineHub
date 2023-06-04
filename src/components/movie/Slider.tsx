@@ -18,12 +18,23 @@ const queryClient = new QueryClient()
 type Props = {
   results: Result[] | undefined
   queryKey: string
+  interceptorFunction:
+    | ((page: number) => Promise<TotalResultsWithPages | undefined>)
+    | undefined
 }
 
-export default function SliderProvider({ results, queryKey }: Props) {
+export default function SliderProvider({
+  results,
+  queryKey,
+  interceptorFunction,
+}: Props) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Slider results={results} queryKey={queryKey} />
+      <Slider
+        interceptorFunction={interceptorFunction}
+        results={results}
+        queryKey={queryKey}
+      />
     </QueryClientProvider>
   )
 }
@@ -51,14 +62,9 @@ const queryFunctions = [
   },
 ]
 
-function Slider({ results, queryKey }: Props) {
+function Slider({ results, queryKey, interceptorFunction }: Props) {
   const [end, setEnd] = useState<boolean>(false)
   let fetchRowData: (page: number) => Promise<TotalResultsWithPages | undefined>
-
-  let fetchRowDataFromMovie: (
-    id: number,
-    page: number
-  ) => Promise<TotalResultsWithPages | undefined>
 
   queryFunctions.find((opt) => {
     if (opt.key == queryKey) {
@@ -75,7 +81,10 @@ function Slider({ results, queryKey }: Props) {
     isLoading,
   } = useInfiniteQuery(
     queryKey,
-    ({ pageParam = 1 }) => fetchRowData(pageParam),
+    async ({ pageParam = 1 }) =>
+      interceptorFunction
+        ? await interceptorFunction(pageParam)
+        : fetchRowData(pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
         const nextPage = allPages.length + 1
@@ -83,6 +92,8 @@ function Slider({ results, queryKey }: Props) {
       },
     }
   )
+
+  console.log(data)
 
   return (
     <div className='relative'>
@@ -101,7 +112,7 @@ function Slider({ results, queryKey }: Props) {
       >
         {isSuccess && data?.pages && data.pages.length > 2
           ? data.pages.map((page) => {
-              return page?.results.map((result, index) => {
+              return page?.results.map((result) => {
                 return <Card key={result.id} result={result} />
               })
             })

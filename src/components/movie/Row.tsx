@@ -6,9 +6,17 @@ type Props = {
   title: string
   totalResultsWithPages: TotalResultsWithPages | undefined
   queryKey: string
+  interceptorFunction?: (
+    page: number
+  ) => Promise<TotalResultsWithPages | undefined>
 }
 
-export default function Row({ title, queryKey, totalResultsWithPages }: Props) {
+export default function Row({
+  title,
+  queryKey,
+  totalResultsWithPages,
+  interceptorFunction,
+}: Props) {
   if (
     totalResultsWithPages?.results &&
     totalResultsWithPages.results.length > 0
@@ -20,6 +28,7 @@ export default function Row({ title, queryKey, totalResultsWithPages }: Props) {
           <SliderProvider
             queryKey={queryKey}
             results={totalResultsWithPages.results}
+            interceptorFunction={interceptorFunction}
           />
         </Padding>
       </div>
