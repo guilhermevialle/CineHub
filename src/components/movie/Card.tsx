@@ -5,7 +5,7 @@ import { poster_size } from '@/services/api'
 import { Result } from '@/types'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { ImSpinner4 } from 'react-icons/im'
+import { ImSpinner3 } from 'react-icons/im'
 
 type Props = {
   result: Result
@@ -26,7 +26,7 @@ export default function Card({ result }: Props) {
       {clicked && (
         <div className='w-full h-full bg-black bg-opacity-60 absolute flex justify-center items-center'>
           <i className='text-white animate-spin transition-all'>
-            <ImSpinner4 size={24} />
+            <ImSpinner3 size={20} />
           </i>
         </div>
       )}

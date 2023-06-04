@@ -55,7 +55,7 @@ export default function ClientMovie({
         <div className='text-white w-full h-fit'>
           <Padding>
             <div className='w-full h-full'>
-              <h1 className='w-full text-4xl font-bold mt-3 mb-4'>
+              <h1 className='w-full text-3xl font-bold mt-3 mb-4'>
                 <Balancer>{movieDetails?.title}</Balancer>
               </h1>
 
@@ -81,7 +81,7 @@ export default function ClientMovie({
                 </span>
 
                 <span
-                  className={`w-fit text-[15px] px-1.5 rounded text-black font-bold flex items-center gap-x-1.5 ${
+                  className={`w-fit text-[15px] px-1.5 rounded text-white font-bold flex items-center gap-x-1.5 ${
                     movieDetails?.vote_average &&
                     movieDetails?.vote_average >= 7
                       ? 'bg-green-400'
@@ -91,7 +91,6 @@ export default function ClientMovie({
                       : 'bg-red-400'
                   }`}
                 >
-                  <AiOutlineVerticalAlignMiddle />
                   {(
                     movieDetails?.vote_average &&
                     movieDetails?.vote_average * 10
@@ -102,7 +101,7 @@ export default function ClientMovie({
               <div className='my-6'>
                 <Button
                   style={{
-                    height: '50px',
+                    height: '40px',
                   }}
                   text='Save'
                 />

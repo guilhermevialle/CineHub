@@ -5,20 +5,21 @@ import Row from '@/components/movie/Row'
 import MobileNavbar from '@/components/navbar/MobileNavbar'
 import NavBreaker from '@/components/navbar/NavBreaker'
 import Padding from '@/components/responsive/Padding'
-import { TotalResultsWithPages } from '@/types'
+import { Result, TotalMovieDetails, TotalResultsWithPages } from '@/types'
 import Balancer from 'react-wrap-balancer'
 import { RiAddLine, RiInformationLine } from 'react-icons/ri'
-import {
-  getPopularMovies,
-  getTopRatedMovies,
-  getUpcomingMovies,
-} from '@/services/api'
+import { poster_size } from '@/services/api'
+import { AiOutlineVerticalAlignMiddle } from 'react-icons/ai'
+import { withGenre } from '@/components/contexts/genres'
+import formatRuntime from '@/utils/format-runtime'
+import { trimString } from '@/utils/trim-string'
 
 type Props = {
   PopularMovies?: TotalResultsWithPages | undefined
   TopRatedMovies?: TotalResultsWithPages | undefined
   UpcomingMovies?: TotalResultsWithPages | undefined
   TrendingMovies?: TotalResultsWithPages | undefined
+  bannerMovie: TotalMovieDetails | undefined
 }
 
 export default function ClientHome({
@@ -26,15 +27,14 @@ export default function ClientHome({
   TopRatedMovies,
   UpcomingMovies,
   TrendingMovies,
+  bannerMovie,
 }: Props) {
-  const banner = 'https://wallpapercave.com/wp/wp4152026.jpg'
-
   return (
     <main className='w-screen h-fit bg-neutral-950'>
       <div className='w-full h-[65vh] relative'>
         <img
           className='w-full h-full absolute object-cover brightness-50'
-          src={banner}
+          src={poster_size + bannerMovie?.poster_path}
           alt='THE EQUALIZER'
         />
         <div className='w-full h-full absolute top-0 left-0 bg-gradient-to-b from-transparent to-black'></div>
@@ -42,22 +42,37 @@ export default function ClientHome({
           <div className='w-full h-full'>
             <div className='w-full h-full relative z-10 flex items-center justify-end flex-col'>
               <h1 className='w-[75%] text-center text-[32px] font-bold text-white mb-6'>
-                <Balancer>The Equalizer No Long Way to Die</Balancer>
+                <Balancer>{bannerMovie?.title}</Balancer>
               </h1>
               <div className='text-neutral-200 flex items-center gap-x-5 mb-4'>
-                <span>Sci-fi</span>
+                <span className='text-neutral-300'>
+                  {bannerMovie?.genres[0].name}
+                </span>
                 <div className='w-[1px] bg-gray-500 h-[50%]'></div>
-                <span>8.5</span>
+                <span
+                  className={`w-fit text-[15px] px-1.5 rounded text-white font-bold flex items-center gap-x-1.5 ${
+                    bannerMovie?.vote_average && bannerMovie?.vote_average >= 7
+                      ? 'bg-green-400'
+                      : bannerMovie?.vote_average &&
+                        bannerMovie?.vote_average >= 5
+                      ? 'bg-yellow-400'
+                      : 'bg-red-400'
+                  }`}
+                >
+                  {(
+                    bannerMovie?.vote_average && bannerMovie?.vote_average * 10
+                  )?.toFixed(0)}
+                </span>
                 <div className='w-[1px] bg-gray-500 h-[50%]'></div>
-                <span>1h37min</span>
+                <span className='text-neutral-400'>
+                  {bannerMovie?.runtime && formatRuntime(bannerMovie?.runtime)}
+                </span>
               </div>
               <div className='text-neutral-300 mb-2'>
                 <p className='text-sm text-zinc-300'>
                   <Balancer>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Dolor neque rerum tempora eveniet minima debitis. Accusamus
-                    dolorum impedit et ad eveniet cupiditate, quidem, laboriosam
-                    vitae facilis culpa, nobis architecto quod!
+                    {bannerMovie?.overview &&
+                      trimString(bannerMovie.overview, 205)}
                   </Balancer>
                 </p>
               </div>
@@ -66,7 +81,7 @@ export default function ClientHome({
         </Padding>
         <div className='w-full bg-black h-24 text-white flex items-center justify-center gap-x-16'>
           <ButtonIconTop text='Save' icon={<RiAddLine size={24} />} />
-          <ButtonIconTop text='Save' icon={<RiInformationLine size={24} />} />
+          <ButtonIconTop text='More' icon={<RiInformationLine size={24} />} />
         </div>
       </div>
 

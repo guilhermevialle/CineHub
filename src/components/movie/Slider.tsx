@@ -120,13 +120,14 @@ function Slider({ results, queryKey, interceptorFunction }: Props) {
               return <Card key={result.id} result={result} />
             })}
       </div>
-      {end && (
-        <div className='w-24 h-full top-0 right-0 absolute bg-gradient-to-r from-transparent to-neutral-800 z-30 flex justify-center items-center'>
+
+      <div className='w-20 h-full top-0 right-0 absolute bg-gradient-to-r from-transparent to-black z-30 flex justify-center items-center'>
+        {end && (
           <i className='text-white animate-spin transition-all'>
             <ImSpinner3 />
           </i>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

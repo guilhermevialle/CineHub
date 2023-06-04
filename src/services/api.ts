@@ -108,3 +108,17 @@ export async function getTrendingMovies(
     return undefined
   }
 }
+
+export async function findManyMovies(
+  query: string,
+  page: number
+): Promise<TotalResultsWithPages | undefined> {
+  try {
+    const { data }: { data: TotalResultsWithPages } = await api.get(
+      `/search/movie?query=${query}&page=${page}`
+    )
+    return data
+  } catch (error) {
+    return undefined
+  }
+}
