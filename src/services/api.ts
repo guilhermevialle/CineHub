@@ -4,7 +4,7 @@ import axios from 'axios'
 const token =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTM3YzAzMjFhMWQ0NzI4ZTA5ZTI3YjEyODczNjIxNSIsInN1YiI6IjYwMmJmNzY0NjNkOTM3MDAzZmNmMDZmZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9xSWO2XlL-RmjClEN4U_6xRH8u57ZDYqWOH9pyxKrYM'
 
-export const poster_size = 'https://image.tmdb.org/t/p/w500'
+export const poster_size = 'https://image.tmdb.org/t/p/w780'
 export const backdrop_size = 'https://image.tmdb.org/t/p/w1280'
 
 const api = axios.create({
