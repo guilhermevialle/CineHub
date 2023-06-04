@@ -1,6 +1,4 @@
-import React from 'react'
-
-export default function ClientMovieSkeleton() {
+export default function Loading() {
   return (
     <main className='w-screen h-screen bg-neutral-950'>
       <div>

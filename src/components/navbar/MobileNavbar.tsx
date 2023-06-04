@@ -43,7 +43,7 @@ export default function MobileNavbar() {
   ]
 
   return (
-    <nav className='w-full h-[90px] fixed bottom-0 left-0 bg-woodsmoke-950'>
+    <nav className='w-full h-[90px] fixed bottom-0 left-0 bg-woodsmoke-950 z-30'>
       <Padding height='100%'>
         <div className='w-full h-full flex items-center justify-between text-white'>
           {navButtons.map((bt) => {

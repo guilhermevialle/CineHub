@@ -1,4 +1,4 @@
-export default function HomeLoading() {
+export default function Loading() {
   return (
     <main className='w-screen h-screen bg-neutral-950'>
       <div className='w-full h-[65vh] p-4'>
