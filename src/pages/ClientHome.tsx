@@ -13,6 +13,7 @@ import { AiOutlineVerticalAlignMiddle } from 'react-icons/ai'
 import { withGenre } from '@/components/contexts/genres'
 import formatRuntime from '@/utils/format-runtime'
 import { trimString } from '@/utils/trim-string'
+import SeeMore from '@/components/banner/SeeMore'
 
 type Props = {
   PopularMovies?: TotalResultsWithPages | undefined
@@ -35,7 +36,7 @@ export default function ClientHome({
         <img
           className='w-full h-full absolute object-cover brightness-50'
           src={poster_size + bannerMovie?.poster_path}
-          alt='THE EQUALIZER'
+          alt={bannerMovie?.title}
         />
         <div className='w-full h-full absolute top-0 left-0 bg-gradient-to-b from-transparent to-black'></div>
         <Padding height='100%'>
@@ -48,7 +49,7 @@ export default function ClientHome({
                 <span className='text-neutral-300'>
                   {bannerMovie?.genres[0].name}
                 </span>
-                <div className='w-[1px] bg-gray-500 h-[50%]'></div>
+                <div className='w-[1px] bg-gray-600 h-[50%]'></div>
                 <span
                   className={`w-fit text-[15px] px-1.5 rounded text-white font-bold flex items-center gap-x-1.5 ${
                     bannerMovie?.vote_average && bannerMovie?.vote_average >= 7
@@ -81,7 +82,7 @@ export default function ClientHome({
         </Padding>
         <div className='w-full bg-black h-24 text-white flex items-center justify-center gap-x-16'>
           <ButtonIconTop text='Save' icon={<RiAddLine size={24} />} />
-          <ButtonIconTop text='More' icon={<RiInformationLine size={24} />} />
+          <SeeMore id={bannerMovie?.id} />
         </div>
       </div>
 

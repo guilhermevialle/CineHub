@@ -24,7 +24,7 @@ export default function Row({
     return (
       <div className='w-full'>
         <Padding>
-          <h1 className='text-white text-2xl mb-2 font-bold'>{title}</h1>
+          <h1 className='text-white text-xl mb-3 font-bold'>{title}</h1>
           <SliderProvider
             queryKey={queryKey}
             results={totalResultsWithPages.results}

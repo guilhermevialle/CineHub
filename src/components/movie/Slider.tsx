@@ -93,8 +93,6 @@ function Slider({ results, queryKey, interceptorFunction }: Props) {
     }
   )
 
-  console.log(data)
-
   return (
     <div className='relative'>
       <div
