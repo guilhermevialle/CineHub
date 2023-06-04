@@ -84,11 +84,11 @@ export default function ClientMovie({
                   className={`w-fit text-[15px] px-1.5 rounded text-white font-bold flex items-center gap-x-1.5 ${
                     movieDetails?.vote_average &&
                     movieDetails?.vote_average >= 7
-                      ? 'bg-green-400'
+                      ? 'bg-emerald-600'
                       : movieDetails?.vote_average &&
                         movieDetails?.vote_average >= 5
-                      ? 'bg-yellow-400'
-                      : 'bg-red-400'
+                      ? 'bg-yellow-600'
+                      : 'bg-red-600'
                   }`}
                 >
                   {(
