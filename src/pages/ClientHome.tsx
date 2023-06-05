@@ -49,7 +49,7 @@ export default function ClientHome({
                 </span>
                 <div className='w-[1px] bg-gray-600 h-[50%]'></div>
                 <span
-                  className={`w-fit text-[15px] px-1.5 rounded text-white font-bold flex items-center gap-x-1.5 ${
+                  className={`w-fit text-[15px] px-1.5 rounded text-white font-bold flex items-center gap-x-1.5 text-shadow ${
                     bannerMovie?.vote_average && bannerMovie?.vote_average >= 7
                       ? 'bg-green-400'
                       : bannerMovie?.vote_average &&

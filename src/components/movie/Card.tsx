@@ -13,7 +13,6 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement> {
 
 export default function Card({ result, ...rest }: Props) {
   const router = useRouter()
-  const [clicked, setClick] = useState<boolean>(false)
   const [focused, setFocus] = useState<boolean>(false)
 
   return (
@@ -21,7 +20,6 @@ export default function Card({ result, ...rest }: Props) {
       {...rest}
       className='flex-none w-[130px] h-[174px] bg-neutral-900 rounded-md relative shadow-md outline-none'
       onClick={() => {
-        setClick(() => true)
         router.push(`/movie/${result.id}`)
       }}
       onFocus={() => setFocus(() => true)}

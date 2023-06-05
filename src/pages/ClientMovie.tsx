@@ -83,7 +83,7 @@ export default function ClientMovie({
                 </span>
 
                 <span
-                  className={`w-fit text-[15px] px-1.5 rounded text-white font-bold flex items-center gap-x-1.5 ${
+                  className={`w-fit text-[15px] px-1.5 rounded text-white font-bold flex items-center gap-x-1.5 text-shadow ${
                     movieDetails?.vote_average &&
                     movieDetails?.vote_average >= 7
                       ? 'bg-emerald-600'
