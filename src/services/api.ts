@@ -127,7 +127,7 @@ export async function findManyMovies(
 ): Promise<TotalResultsWithPages | undefined> {
   try {
     const { data }: { data: TotalResultsWithPages } = await api.get(
-      `/search/movie?query=${query}&include_adult=true&page=${page}`
+      `/search/movie?query=${query}&page=${page}`
     )
     const nonNullResults = filterNonNullResults(data)
     return { ...data, results: nonNullResults }

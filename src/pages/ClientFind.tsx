@@ -17,7 +17,7 @@ export default function ClientFind() {
           <Search />
         </div>
 
-        <div className='w-full h-[90%] overflow-y-scroll mt-6'>
+        <div className='w-full h-[84%] overflow-y-scroll mt-6'>
           <h1 className='text-white text-2xl mb-5'>Categories</h1>
           <div className='w-full h-full   flex flex-col gap-y-4'>
             {movieGenres.map((genre) => {

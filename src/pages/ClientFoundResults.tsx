@@ -16,7 +16,7 @@ export default function ClientFoundResults({ foundResults, query }: Props) {
       <Topbar />
       <NavBreaker top={true} />
       <Padding height='100%'>
-        <div className='py-2 mb-4'>
+        <div className='py-3.5 mb-4'>
           <Search />
         </div>
         <h1 className='text-white text-2xl mb-5'>{query}</h1>
