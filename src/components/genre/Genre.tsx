@@ -24,9 +24,9 @@ export default function Genre({ genre }: Props) {
       onBlur={() => setFocus(() => false)}
     >
       <div className='w-full h-fit flex items-center gap-x-6 py-1 rounded-md hover:bg-black'>
-        <div className='w-[100px] h-[60px] rounded-md bg-neutral-900'>
+        <div className='w-[100px] h-[60px] md:w-[150px] md:h-[100px] lg:w-[220px] lg:h-[140px] rounded-md bg-neutral-900'>
           <img
-            className='w-[100px] h-[60px]
+            className='w-full h-full 
         object-cover rounded-md object-top shadow-sm'
             loading='lazy'
             src={genre.poster}

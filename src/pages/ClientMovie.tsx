@@ -123,7 +123,7 @@ export default function ClientMovie({
               </div>
 
               <div className='mb-6'>
-                <p className='text-sm text-zinc-200 mb-2'>
+                <p className='text-sm lg:text-base text-zinc-200 mb-2'>
                   <Balancer>{movieDetails?.overview}</Balancer>
                 </p>
 

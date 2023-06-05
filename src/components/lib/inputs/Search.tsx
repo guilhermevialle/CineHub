@@ -31,7 +31,7 @@ export default function Search({ ...rest }: Props) {
     <form
       onSubmit={handleSubmit}
       {...rest}
-      className='w-full h-12 text-neutral-200 flex items-center bg-neutral-900 rounded border-[1px] border-neutral-800 shadow-md'
+      className='w-full h-12 xl:h-14 text-neutral-200 flex items-center bg-neutral-900 rounded border-[1px] border-neutral-800 shadow-md'
     >
       <i className='px-5 text-zinc-600'>
         <BiSearch size={15} />

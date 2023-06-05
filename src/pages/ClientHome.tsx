@@ -68,7 +68,7 @@ export default function ClientHome({
                 </span>
               </div>
               <div className='text-neutral-300 mb-2'>
-                <p className='text-sm text-zinc-300'>
+                <p className='text-sm lg:text-lg text-zinc-300'>
                   <Balancer>
                     {bannerMovie?.overview &&
                       trimString(bannerMovie.overview, 205)}
@@ -85,8 +85,8 @@ export default function ClientHome({
       </div>
 
       <div className='w-full h-32'></div>
-      <div className='space-y-7'>
-        <Padding>
+      <Padding>
+        <div className='space-y-7'>
           <Row
             queryKey='popularMovies'
             title='Popular movies'
@@ -107,8 +107,8 @@ export default function ClientHome({
             title='Trending'
             totalResultsWithPages={TrendingMovies}
           />
-        </Padding>
-      </div>
+        </div>
+      </Padding>
 
       <NavBreaker />
       <MobileNavbar />
