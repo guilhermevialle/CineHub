@@ -28,7 +28,7 @@ export default function Card({ result, ...rest }: Props) {
       {focused && (
         <div className='w-full h-full bg-black bg-opacity-60 absolute flex justify-center items-center'>
           <i className='text-white animate-spin transition-all'>
-            <ImSpinner3 size={20} />
+            <ImSpinner3 size={18} />
           </i>
         </div>
       )}
