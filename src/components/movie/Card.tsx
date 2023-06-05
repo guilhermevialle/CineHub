@@ -2,13 +2,13 @@
 'use client'
 
 import { poster_size } from '@/services/api'
-import { Result } from '@/types'
+import { Result, TotalMovieDetails } from '@/types'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { ImSpinner3 } from 'react-icons/im'
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
-  result: Result
+  result: Result | TotalMovieDetails
 }
 
 export default function Card({ result, ...rest }: Props) {
@@ -36,7 +36,7 @@ export default function Card({ result, ...rest }: Props) {
       <div className='w-full h-full bg-neutral-900 rounded-md '>
         <img
           src={poster_size + result?.poster_path}
-          className='w-full h-full object-cover rounded-md'
+          className='w-full h-full object-cover rounded-md skeleton-screen'
           loading='lazy'
         />
       </div>

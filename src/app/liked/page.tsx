@@ -1,5 +1,5 @@
-import ClientLiked from '@/pages/ClientLiked'
+import ClientLikedProvider from '@/pages/ClientLiked'
 
 export default function ServerLiked() {
-  return <ClientLiked />
+  return <ClientLikedProvider />
 }

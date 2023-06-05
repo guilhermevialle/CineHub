@@ -29,5 +29,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@gradin/tailwindcss-skeleton-screen'),
+  ],
 }

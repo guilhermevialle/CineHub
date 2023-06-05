@@ -166,3 +166,11 @@ export async function getBannerMovie() {
 
   return foundMovie
 }
+
+export async function findMultipleMovies(
+  ids: number[]
+): Promise<TotalMovieDetails[]> {
+  const promises = ids.map((id) => findUniqueMovie(id))
+  const movies = await Promise.all(promises)
+  return movies.filter((movie) => movie !== undefined) as TotalMovieDetails[]
+}
