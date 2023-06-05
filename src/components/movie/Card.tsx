@@ -7,17 +7,19 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { ImSpinner3 } from 'react-icons/im'
 
-type Props = {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   result: Result
 }
 
-export default function Card({ result }: Props) {
+export default function Card({ result, ...rest }: Props) {
   const router = useRouter()
   const [clicked, setClick] = useState<boolean>(false)
+  const [imageIsLoading, setLoad] = useState<boolean>(true)
 
   return (
     <div
-      className='flex-none w-[130px] h-[174px] bg-neutral-900 rounded-md relative'
+      {...rest}
+      className='flex-none w-[130px] h-[174px] bg-neutral-900 rounded-md relative shadow-md'
       onClick={() => {
         setClick(() => true)
         router.push(`/movie/${result.id}`)
@@ -31,11 +33,14 @@ export default function Card({ result }: Props) {
         </div>
       )}
 
-      <img
-        src={poster_size + result?.poster_path}
-        className='object-cover rounded-md'
-        loading='lazy'
-      />
+      <div className='w-full h-full bg-neutral-900 rounded-md '>
+        <img
+          src={poster_size + result?.poster_path}
+          className='w-full h-full object-cover rounded-md'
+          loading='lazy'
+          onLoad={() => setLoad(false)}
+        />
+      </div>
     </div>
   )
 }

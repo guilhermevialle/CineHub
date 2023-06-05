@@ -1,3 +1,4 @@
+import ClientFoundResults from '@/pages/ClientFoundResults'
 import { findManyMovies } from '@/services/api'
 
 type Props = {
@@ -6,10 +7,9 @@ type Props = {
   }
 }
 
-export default async function ServerResultsFound({ params }: Props) {
+export default async function ServerFoundResults({ params }: Props) {
   const { query } = params
+  const foundResults = await findManyMovies(query, 1)
 
-  const data = await findManyMovies(query, 1)
-
-  return <pre>{JSON.stringify(data, null, 2)}</pre>
+  return <ClientFoundResults query={query} foundResults={foundResults} />
 }

@@ -17,8 +17,6 @@ export default function Search({ ...rest }: Props) {
       const input = inputRef.current
       const query = input.value
 
-      console.log(query)
-
       if (query && query.length > 2) {
         router.push(`/find/${query}`)
       }

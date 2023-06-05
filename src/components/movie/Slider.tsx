@@ -72,14 +72,7 @@ function Slider({ results, queryKey, interceptorFunction }: Props) {
     }
   })
 
-  const {
-    data,
-    isSuccess,
-    hasNextPage,
-    fetchNextPage,
-    isFetchingNextPage,
-    isLoading,
-  } = useInfiniteQuery(
+  const { data, isSuccess, hasNextPage, fetchNextPage } = useInfiniteQuery(
     queryKey,
     async ({ pageParam = 1 }) =>
       interceptorFunction

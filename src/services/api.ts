@@ -1,4 +1,6 @@
 import { TotalMovieDetails, TotalResultsWithPages } from '@/types'
+import filterNonNullResults from '@/utils/filter-null-results'
+import random from '@/utils/random'
 import axios from 'axios'
 
 const token =
@@ -22,7 +24,8 @@ export async function getPopularMovies(
     const { data }: { data: TotalResultsWithPages } = await api.get(
       `/movie/popular?language=en-US&page=${page}`
     )
-    return data
+    const nonNullResults = filterNonNullResults(data)
+    return { ...data, results: nonNullResults }
   } catch (error) {
     return undefined
   }
@@ -35,7 +38,8 @@ export async function getTopRatedMovies(
     const { data }: { data: TotalResultsWithPages } = await api.get(
       `/movie/top_rated?language=en-US&page=${page}`
     )
-    return data
+    const nonNullResults = filterNonNullResults(data)
+    return { ...data, results: nonNullResults }
   } catch (error) {
     return undefined
   }
@@ -48,7 +52,8 @@ export async function getUpcomingMovies(
     const { data }: { data: TotalResultsWithPages } = await api.get(
       `/movie/upcoming?language=en-US&page=${page}`
     )
-    return data
+    const nonNullResults = filterNonNullResults(data)
+    return { ...data, results: nonNullResults }
   } catch (error) {
     return undefined
   }
@@ -75,7 +80,8 @@ export async function getSimilarMoviesFrom(
     const { data }: { data: TotalResultsWithPages } = await api.get(
       `/movie/${id}/similar?&page=${page}`
     )
-    return data
+    const nonNullResults = filterNonNullResults(data)
+    return { ...data, results: nonNullResults }
   } catch (error) {
     return undefined
   }
@@ -89,7 +95,8 @@ export async function getRecomendationsFrom(
     const { data }: { data: TotalResultsWithPages } = await api.get(
       `/movie/${id}/recommendations?&page=${page}`
     )
-    return data
+    const nonNullResults = filterNonNullResults(data)
+    return { ...data, results: nonNullResults }
   } catch (error) {
     return undefined
   }
@@ -103,10 +110,15 @@ export async function getTrendingMovies(
     const { data }: { data: TotalResultsWithPages } = await api.get(
       `/trending/movie/${time}?&page=${page}`
     )
-    return data
+    const nonNullResults = filterNonNullResults(data)
+    return { ...data, results: nonNullResults }
   } catch (error) {
     return undefined
   }
+}
+
+type FilterOptions = {
+  sortBy: 'popularity'
 }
 
 export async function findManyMovies(
@@ -115,9 +127,10 @@ export async function findManyMovies(
 ): Promise<TotalResultsWithPages | undefined> {
   try {
     const { data }: { data: TotalResultsWithPages } = await api.get(
-      `/search/movie?query=${query}&page=${page}`
+      `/search/movie?query=${query}&include_adult=true&page=${page}`
     )
-    return data
+    const nonNullResults = filterNonNullResults(data)
+    return { ...data, results: nonNullResults }
   } catch (error) {
     return undefined
   }
@@ -130,8 +143,26 @@ export async function findMoviesByGenre(
     const { data }: { data: TotalResultsWithPages } = await api.get(
       `/discover/movie?with_genres=${genreId}`
     )
-    return data
+    const nonNullResults = filterNonNullResults(data)
+    return { ...data, results: nonNullResults }
   } catch (error) {
     return undefined
   }
+}
+
+export async function getBannerMovie() {
+  const trendingPagesForBanner = await getTrendingMovies('week', random(0, 10))
+  const randomMovieId =
+    trendingPagesForBanner &&
+    trendingPagesForBanner?.results[
+      random(0, trendingPagesForBanner?.results.length)
+    ].id
+
+  let foundMovie
+
+  if (randomMovieId) {
+    foundMovie = await findUniqueMovie(randomMovieId)
+  }
+
+  return foundMovie
 }

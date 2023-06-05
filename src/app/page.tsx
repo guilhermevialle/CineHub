@@ -1,6 +1,7 @@
 import ClientHome from '@/pages/ClientHome'
 import {
   findUniqueMovie,
+  getBannerMovie,
   getPopularMovies,
   getTopRatedMovies,
   getTrendingMovies,
@@ -14,18 +15,7 @@ export default async function ServerHome() {
   const topRatedMovies = await getTopRatedMovies(1)
   const upcomingMovies = await getUpcomingMovies(1)
   const trendingMovies = await getTrendingMovies('week', 1)
-  const trendingPagesForBanner = await getTrendingMovies('week', random(0, 10))
-  const selectedMovieId =
-    trendingPagesForBanner &&
-    trendingPagesForBanner?.results[
-      random(0, trendingPagesForBanner?.results.length)
-    ].id
-
-  let foundBannerMovie
-
-  if (selectedMovieId) {
-    foundBannerMovie = await findUniqueMovie(selectedMovieId)
-  }
+  const foundBannerMovie = await getBannerMovie()
 
   return (
     <ClientHome
