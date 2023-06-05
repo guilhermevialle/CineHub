@@ -28,8 +28,9 @@ function MobileNavbar() {
     },
     {
       icon: <RiBookmarkLine size={22} />,
-      text: 'Saves',
+      text: 'Your choices',
       width: '25%',
+      click: () => router.push(`/liked`),
     },
     {
       icon: <RiSearchLine size={22} />,

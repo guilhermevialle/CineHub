@@ -2,9 +2,15 @@
 
 'use client'
 
+import { RiHeart3Line, RiShareForwardLine } from 'react-icons/ri'
+import { Balancer } from 'react-wrap-balancer'
 import Button from '@/components/lib/buttons/Button'
+import ButtonIconTop from '@/components/lib/buttons/ButtonIconTop'
 import MobileNavbar from '@/components/navbar/MobileNavbar'
+import NavBreaker from '@/components/navbar/NavBreaker'
 import Padding from '@/components/responsive/Padding'
+import Row from '@/components/movie/Row'
+import Topbar from '@/components/navbar/Topbar'
 import {
   backdrop_size,
   getRecomendationsFrom,
@@ -12,13 +18,7 @@ import {
 } from '@/services/api'
 import { TotalMovieDetails, TotalResultsWithPages } from '@/types'
 import formatRuntime from '@/utils/format-runtime'
-import { Balancer } from 'react-wrap-balancer'
-import { RiHeart3Line, RiShareForwardLine } from 'react-icons/ri'
-import ButtonIconTop from '@/components/lib/buttons/ButtonIconTop'
-import { AiOutlineVerticalAlignMiddle } from 'react-icons/ai'
-import Row from '@/components/movie/Row'
-import NavBreaker from '@/components/navbar/NavBreaker'
-import Topbar from '@/components/navbar/Topbar'
+import useLikedContent from '@/hooks/useLikedContent'
 
 type Props = {
   movieDetails: TotalMovieDetails | undefined
@@ -44,6 +44,8 @@ export default function ClientMovie({
       return await getRecomendationsFrom(movieDetails?.id, page)
     }
   }
+
+  const { updateLikedArray, isLiked, removeLikedItem } = useLikedContent()
 
   return (
     <main className='w-screen h-fit bg-neutral-950'>
@@ -102,10 +104,21 @@ export default function ClientMovie({
 
               <div className='my-6'>
                 <Button
+                  onClick={() => {
+                    if (movieDetails?.id) {
+                      if (isLiked(movieDetails.id))
+                        return removeLikedItem(movieDetails.id)
+                      updateLikedArray(movieDetails.id)
+                    }
+                  }}
                   style={{
                     height: '40px',
                   }}
-                  text='Save'
+                  text={
+                    movieDetails?.id && isLiked(movieDetails.id)
+                      ? 'Remove from list'
+                      : 'Save'
+                  }
                 />
               </div>
 
