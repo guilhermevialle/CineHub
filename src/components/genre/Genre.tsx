@@ -3,7 +3,6 @@
 import { MovieGenre } from '@/types'
 import { useRouter } from 'next/navigation'
 import { FiChevronRight } from 'react-icons/fi'
-import { useState, useEffect } from 'react'
 
 type Props = {
   genre: MovieGenre
@@ -20,7 +19,7 @@ export default function Genre({ genre }: Props) {
       <div className='w-[100px] h-[60px] rounded-md bg-neutral-900'>
         <img
           className='w-[100px] h-[60px]
-        object-cover rounded-md object-top'
+        object-cover rounded-md object-top shadow-sm'
           loading='lazy'
           src={genre.poster}
         />

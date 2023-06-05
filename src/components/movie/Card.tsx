@@ -7,25 +7,27 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { ImSpinner3 } from 'react-icons/im'
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
+interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   result: Result
 }
 
 export default function Card({ result, ...rest }: Props) {
   const router = useRouter()
   const [clicked, setClick] = useState<boolean>(false)
-  const [imageIsLoading, setLoad] = useState<boolean>(true)
+  const [focused, setFocus] = useState<boolean>(false)
 
   return (
-    <div
+    <button
       {...rest}
-      className='flex-none w-[130px] h-[174px] bg-neutral-900 rounded-md relative shadow-md'
+      className='flex-none w-[130px] h-[174px] bg-neutral-900 rounded-md relative shadow-md outline-none'
       onClick={() => {
         setClick(() => true)
         router.push(`/movie/${result.id}`)
       }}
+      onFocus={() => setFocus(() => true)}
+      onBlur={() => setFocus(() => false)}
     >
-      {clicked && (
+      {focused && (
         <div className='w-full h-full bg-black bg-opacity-60 absolute flex justify-center items-center'>
           <i className='text-white animate-spin transition-all'>
             <ImSpinner3 size={20} />
@@ -38,9 +40,8 @@ export default function Card({ result, ...rest }: Props) {
           src={poster_size + result?.poster_path}
           className='w-full h-full object-cover rounded-md'
           loading='lazy'
-          onLoad={() => setLoad(false)}
         />
       </div>
-    </div>
+    </button>
   )
 }

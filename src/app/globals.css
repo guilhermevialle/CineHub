@@ -5,3 +5,7 @@
 h1 {
   font-family: 'Circular Std', sans-serif;
 }
+
+button:active {
+  -webkit-tap-highlight-color: transparent;
+}

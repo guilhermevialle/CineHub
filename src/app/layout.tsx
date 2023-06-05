@@ -21,7 +21,7 @@ export default function RootLayout({
           rel='stylesheet'
         />
       </head>
-      <body className={inter.className + ' bg-neutral-950'}>
+      <body className={inter.className + ' bg-neutral-950 select-none'}>
         {children}
         <MobileNavbar />
       </body>

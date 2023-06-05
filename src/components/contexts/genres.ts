@@ -5,7 +5,7 @@ export const movieGenres: MovieGenre[] = [
     id: 28,
     name: 'Action',
     poster:
-      'https://gramaturaalta.com.br/wp-content/uploads/2018/07/missaoimpossivelfallout.jpg',
+      'https://blogbeautifuldreams.files.wordpress.com/2018/10/mission-impossible-fallout.jpg',
   },
   {
     id: 12,
