@@ -18,6 +18,7 @@ import ButtonIconTop from '@/components/lib/buttons/ButtonIconTop'
 import { AiOutlineVerticalAlignMiddle } from 'react-icons/ai'
 import Row from '@/components/movie/Row'
 import NavBreaker from '@/components/navbar/NavBreaker'
+import Topbar from '@/components/navbar/Topbar'
 
 type Props = {
   movieDetails: TotalMovieDetails | undefined
@@ -46,6 +47,7 @@ export default function ClientMovie({
 
   return (
     <main className='w-screen h-fit bg-neutral-950'>
+      <NavBreaker />
       <div>
         <img
           className='w-full h-64 object-cover'
@@ -158,6 +160,7 @@ export default function ClientMovie({
           </Padding>
         </div>
       </div>
+      <Topbar />
       <MobileNavbar />
     </main>
   )

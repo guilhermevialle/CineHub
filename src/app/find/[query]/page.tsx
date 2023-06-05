@@ -11,5 +11,10 @@ export default async function ServerFoundResults({ params }: Props) {
   const { query } = params
   const foundResults = await findManyMovies(query, 1)
 
-  return <ClientFoundResults query={query} foundResults={foundResults} />
+  return (
+    <ClientFoundResults
+      query={decodeURIComponent(query)}
+      foundResults={foundResults}
+    />
+  )
 }

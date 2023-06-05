@@ -112,7 +112,7 @@ function Slider({ results, queryKey, interceptorFunction }: Props) {
             })}
       </div>
 
-      <div className='w-20 h-full top-0 right-0 absolute bg-gradient-to-r from-transparent to-black z-30 flex justify-center items-center'>
+      <div className='w-20 h-full top-0 right-0 absolute bg-gradient-to-r from-transparent to-neutral-950 z-30 flex justify-center items-center'>
         {end && (
           <i className='text-white animate-spin transition-all'>
             <ImSpinner3 />
