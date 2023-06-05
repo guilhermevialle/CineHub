@@ -6,7 +6,6 @@ import Search from '@/components/lib/inputs/Search'
 import MobileNavbar from '@/components/navbar/MobileNavbar'
 import NavBreaker from '@/components/navbar/NavBreaker'
 import Padding from '@/components/responsive/Padding'
-import { FiChevronRight } from 'react-icons/fi'
 
 export default function ClientFind() {
   return (

@@ -9,14 +9,15 @@ import {
   RiSettings2Line,
   RiSearchLine,
 } from 'react-icons/ri'
-import { useState } from 'react'
+import { useAtom } from 'jotai'
+import { activeNavItemAtom } from '../contexts/activeNavItemAtom'
+import { memo } from 'react'
 
 type NavButtonOption = 'Home' | 'Saves' | 'Explore' | 'Config'
 
-export default function MobileNavbar() {
+function MobileNavbar() {
   const router = useRouter()
-  const [activeNavButton, setActiveNavButton] =
-    useState<NavButtonOption>('Home')
+  const [activeNavItem, setActiveNavItem] = useAtom(activeNavItemAtom)
 
   const navButtons = [
     {
@@ -52,13 +53,15 @@ export default function MobileNavbar() {
               <ButtonIconTop
                 key={bt.text}
                 onClick={() => {
-                  setActiveNavButton(() => bt.text as NavButtonOption)
+                  setActiveNavItem(() => bt.text as NavButtonOption)
                   bt.click && bt.click()
                 }}
                 text={bt.text}
-                active={activeNavButton == bt.text}
                 icon={bt.icon}
-                style={{ width: bt.width }}
+                style={{
+                  width: bt.width,
+                  color: activeNavItem == bt.text ? '#fff' : '',
+                }}
               />
             )
           })}
@@ -67,3 +70,5 @@ export default function MobileNavbar() {
     </nav>
   )
 }
+
+export default memo(MobileNavbar)
