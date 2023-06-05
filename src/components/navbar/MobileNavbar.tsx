@@ -34,6 +34,7 @@ export default function MobileNavbar() {
       icon: <RiSearchLine size={22} />,
       text: 'Explore',
       width: '25%',
+      click: () => router.push(`/find`),
     },
     {
       icon: <RiSettings2Line size={22} />,

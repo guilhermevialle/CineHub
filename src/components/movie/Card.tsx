@@ -17,7 +17,7 @@ export default function Card({ result }: Props) {
 
   return (
     <div
-      className='flex-none w-[130px] h-[174px] bg-neutral-900 rounded relative'
+      className='flex-none w-[130px] h-[174px] bg-neutral-900 rounded-md relative'
       onClick={() => {
         setClick(() => true)
         router.push(`/movie/${result.id}`)
@@ -33,7 +33,7 @@ export default function Card({ result }: Props) {
 
       <img
         src={poster_size + result?.poster_path}
-        className='object-cover'
+        className='object-cover rounded-md'
         loading='lazy'
       />
     </div>

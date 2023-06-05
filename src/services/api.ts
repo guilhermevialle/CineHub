@@ -122,3 +122,16 @@ export async function findManyMovies(
     return undefined
   }
 }
+
+export async function findMoviesByGenre(
+  genreId: number
+): Promise<TotalResultsWithPages | undefined> {
+  try {
+    const { data }: { data: TotalResultsWithPages } = await api.get(
+      `/discover/movie?with_genres=${genreId}`
+    )
+    return data
+  } catch (error) {
+    return undefined
+  }
+}

@@ -83,3 +83,9 @@ export type SpokenLanguage = {
   iso_639_1: string
   name: string
 }
+
+type MovieGenre = {
+  id: number
+  name: string
+  poster: string
+}

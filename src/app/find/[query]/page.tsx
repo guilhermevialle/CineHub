@@ -6,13 +6,10 @@ type Props = {
   }
 }
 
-export default async function ServerFoundMovies({ params }: Props) {
+export default async function ServerResultsFound({ params }: Props) {
   const { query } = params
-  const movies = await findManyMovies(query, 1)
 
-  return (
-    <main>
-      <pre>{JSON.stringify(movies, null, 2)}</pre>
-    </main>
-  )
+  const data = await findManyMovies(query, 1)
+
+  return <pre>{JSON.stringify(data, null, 2)}</pre>
 }
