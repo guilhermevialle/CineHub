@@ -47,7 +47,7 @@ export default function ClientMovie({
 
   return (
     <main className='w-screen h-fit bg-neutral-950'>
-      <NavBreaker />
+      <NavBreaker top={true} />
       <div>
         <img
           className='w-full h-64 object-cover'

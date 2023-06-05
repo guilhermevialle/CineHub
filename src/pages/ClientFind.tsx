@@ -11,7 +11,7 @@ import Padding from '@/components/responsive/Padding'
 export default function ClientFind() {
   return (
     <main className='w-screen h-screen bg-neutral-950 py-4'>
-      <NavBreaker />
+      <NavBreaker top={true} />
       <Padding height='100%'>
         <div className='w-full h-[8%]'>
           <Search />

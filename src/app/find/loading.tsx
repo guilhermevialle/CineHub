@@ -1,3 +1,4 @@
+import NavBreaker from '@/components/navbar/NavBreaker'
 import Padding from '@/components/responsive/Padding'
 
 export default function Loading() {
@@ -5,6 +6,7 @@ export default function Loading() {
 
   return (
     <main className='w-screen h-screen bg-neutral-950 py-4'>
+      <NavBreaker top={true} />
       <Padding>
         <div className='w-full h-11 text-neutral-200 flex items-center bg-neutral-900 rounded shadow-sm animate-pulse'></div>
         <div className='w-full h-fit mt-6'>

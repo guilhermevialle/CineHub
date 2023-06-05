@@ -14,7 +14,7 @@ export default function ClientFoundResults({ foundResults, query }: Props) {
   return (
     <main className='w-screen h-fit bg-neutral-950 flex flex-col'>
       <Topbar />
-      <NavBreaker />
+      <NavBreaker top={true} />
       <Padding height='100%'>
         <div className='py-2 mb-4'>
           <Search />

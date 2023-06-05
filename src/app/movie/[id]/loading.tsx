@@ -1,6 +1,9 @@
+import NavBreaker from '@/components/navbar/NavBreaker'
+
 export default function Loading() {
   return (
     <main className='w-screen h-screen bg-neutral-950'>
+      <NavBreaker top={true} />
       <div>
         <div className='w-full h-64 bg-neutral-800 animate-pulse'></div>
         <div className='text-white w-full h-fit'>
