@@ -18,7 +18,7 @@ export default function Card({ result, ...rest }: Props) {
   return (
     <button
       {...rest}
-      className='flex-none w-[130px] h-[174px] bg-neutral-900 rounded-md relative shadow-md outline-none'
+      className='flex-none w-[130px] sm:w-[160px] sm:h-[204px] md:w-[190px] md:h-[234px] h-[174px] bg-neutral-900 rounded-md relative shadow-md outline-none'
       onClick={() => {
         router.push(`/movie/${result.id}`)
       }}
