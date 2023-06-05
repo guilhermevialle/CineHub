@@ -50,14 +50,14 @@ export default function ClientMovie({
   return (
     <main className='w-screen h-fit bg-neutral-950'>
       <NavBreaker top={true} />
-      <div>
-        <img
-          className='w-full h-64 object-cover'
-          loading='lazy'
-          src={backdrop_size + movieDetails?.backdrop_path}
-        />
-        <div className='text-white w-full h-fit'>
-          <Padding>
+      <Padding>
+        <div>
+          <img
+            className='w-full h-64 md:h-96 2xl:h-[460px] object-cover'
+            loading='lazy'
+            src={backdrop_size + movieDetails?.backdrop_path}
+          />
+          <div className='text-white w-full h-fit'>
             <div className='w-full h-full'>
               <h1 className='w-full text-3xl font-bold mt-3 mb-4'>
                 <Balancer>{movieDetails?.title}</Balancer>
@@ -170,11 +170,11 @@ export default function ClientMovie({
               />
             </div>
             <NavBreaker />
-          </Padding>
+          </div>
         </div>
-      </div>
-      <Topbar />
-      <MobileNavbar />
+        <Topbar />
+        <MobileNavbar />
+      </Padding>
     </main>
   )
 }

@@ -86,26 +86,28 @@ export default function ClientHome({
 
       <div className='w-full h-32'></div>
       <div className='space-y-7'>
-        <Row
-          queryKey='popularMovies'
-          title='Popular movies'
-          totalResultsWithPages={PopularMovies}
-        />
-        <Row
-          title='Top rated movies'
-          queryKey='topRatedMovies'
-          totalResultsWithPages={TopRatedMovies}
-        />
-        <Row
-          queryKey='upcomingMovies'
-          title='Upcoming'
-          totalResultsWithPages={UpcomingMovies}
-        />
-        <Row
-          queryKey='trending'
-          title='Trending'
-          totalResultsWithPages={TrendingMovies}
-        />
+        <Padding>
+          <Row
+            queryKey='popularMovies'
+            title='Popular movies'
+            totalResultsWithPages={PopularMovies}
+          />
+          <Row
+            title='Top rated movies'
+            queryKey='topRatedMovies'
+            totalResultsWithPages={TopRatedMovies}
+          />
+          <Row
+            queryKey='upcomingMovies'
+            title='Upcoming'
+            totalResultsWithPages={UpcomingMovies}
+          />
+          <Row
+            queryKey='trending'
+            title='Trending'
+            totalResultsWithPages={TrendingMovies}
+          />
+        </Padding>
       </div>
 
       <NavBreaker />

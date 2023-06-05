@@ -7,7 +7,7 @@ export default function Loading() {
       <Padding>
         <NavBreaker top={true} />
         <div>
-          <div className='w-full h-64 bg-neutral-800 animate-pulse'></div>
+          <div className='w-full h-64 md:h-96 2xl:h-[460px] bg-neutral-800 animate-pulse'></div>
           <div className='text-white w-full h-fit'>
             <div className='p-4'>
               <div className='w-full h-full'>

@@ -23,14 +23,12 @@ export default function Row({
   ) {
     return (
       <div className='w-full'>
-        <Padding>
-          <h1 className='text-white text-xl mb-1.5 font-bold'>{title}</h1>
-          <SliderProvider
-            queryKey={queryKey}
-            results={totalResultsWithPages.results}
-            interceptorFunction={interceptorFunction}
-          />
-        </Padding>
+        <h1 className='text-white text-xl mb-1.5 font-bold'>{title}</h1>
+        <SliderProvider
+          queryKey={queryKey}
+          results={totalResultsWithPages.results}
+          interceptorFunction={interceptorFunction}
+        />
       </div>
     )
   } else {
