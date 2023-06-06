@@ -23,25 +23,20 @@ function MobileNavbar() {
     {
       icon: <RiHomeLine size={22} />,
       text: 'Home',
-      width: '25%',
+      width: '33.3%',
       click: () => router.push(`/`),
     },
     {
       icon: <RiBookmarkLine size={22} />,
       text: 'Your choices',
-      width: '25%',
+      width: '33.3%',
       click: () => router.push(`/liked`),
     },
     {
       icon: <RiSearchLine size={22} />,
       text: 'Explore',
-      width: '25%',
+      width: '33.3%',
       click: () => router.push(`/find`),
-    },
-    {
-      icon: <RiSettings2Line size={22} />,
-      text: 'Preferences',
-      width: '25%',
     },
   ]
 

@@ -18,7 +18,6 @@ export default function Loading() {
             <div className='w-full h-24 rounded-md animate-pulse bg-neutral-800'></div>
             <div className='flex justify-center mt-8 gap-x-12'>
               <div className='w-10 h-10 rounded-md animate-pulse bg-neutral-800'></div>
-              <div className='w-10 h-10 rounded-md animate-pulse bg-neutral-800'></div>
             </div>
           </div>
           <div className='w-full h-fit animate-pulse bg-neutral-900 mt-16 flex rounded-md p-2 gap-x-2'>

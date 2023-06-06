@@ -79,7 +79,6 @@ export default function ClientHome({
           </div>
         </Padding>
         <div className='w-full bg-black h-24 text-white flex items-center justify-center gap-x-16'>
-          <ButtonIconTop text='Save' icon={<RiAddLine size={24} />} />
           <SeeMore id={bannerMovie?.id} />
         </div>
       </div>
