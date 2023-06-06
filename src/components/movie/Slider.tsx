@@ -76,19 +76,20 @@ function Slider({ results, queryKey, interceptorFunction }: Props) {
     }
   })
 
-  const { data, isSuccess, hasNextPage, fetchNextPage } = useInfiniteQuery(
-    queryKey,
-    async ({ pageParam = 1 }) =>
-      interceptorFunction
-        ? await interceptorFunction(pageParam)
-        : fetchRowData(pageParam),
-    {
-      getNextPageParam: (lastPage, allPages) => {
-        const nextPage = allPages.length + 1
-        return nextPage
-      },
-    }
-  )
+  const { data, isSuccess, hasNextPage, fetchNextPage, isFetching } =
+    useInfiniteQuery(
+      queryKey,
+      async ({ pageParam = 1 }) =>
+        interceptorFunction
+          ? await interceptorFunction(pageParam)
+          : fetchRowData(pageParam),
+      {
+        getNextPageParam: (lastPage, allPages) => {
+          const nextPage = allPages.length + 1
+          return nextPage
+        },
+      }
+    )
 
   function moveScrollPosition(target: HTMLDivElement, pos: number) {
     if (target) {
@@ -112,21 +113,21 @@ function Slider({ results, queryKey, interceptorFunction }: Props) {
           const { scrollWidth, scrollLeft, clientWidth } = e.currentTarget
           const isScrollAtEnd = scrollLeft >= scrollWidth - clientWidth
 
-          if (isScrollAtEnd && hasNextPage) {
+          if (!isFetching && isScrollAtEnd && hasNextPage) {
             setEnd(() => true)
             await fetchNextPage()
             await setEnd(() => false)
           }
         }}
       >
-        {isSuccess && data?.pages && data.pages.length > 2
-          ? data.pages.map((page) => {
+        {data?.pages && data.pages.length < 2
+          ? results?.map((result) => {
+              return <Card key={result.id} result={result} />
+            })
+          : data?.pages.map((page) => {
               return page?.results.map((result) => {
                 return <Card key={result.id} result={result} />
               })
-            })
-          : results?.map((result) => {
-              return <Card key={result.id} result={result} />
             })}
       </div>
 
