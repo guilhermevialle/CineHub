@@ -137,11 +137,12 @@ export async function findManyMovies(
 }
 
 export async function findMoviesByGenre(
-  genreId: number
+  genreId: number,
+  page?: number
 ): Promise<TotalResultsWithPages | undefined> {
   try {
     const { data }: { data: TotalResultsWithPages } = await api.get(
-      `/discover/movie?with_genres=${genreId}`
+      `/discover/movie?with_genres=${genreId}&page=${page ?? 1}`
     )
     const nonNullResults = filterNonNullResults(data)
     return { ...data, results: nonNullResults }
