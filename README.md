@@ -12,6 +12,10 @@ Check out [CineHub](https://cinehub-database.vercel.app/) to see more detailed i
 - **Favorites and watchlist**: Save favorite movies and TV shows to your favorites list or watchlist for easy access and future reference.
 - **Responsive design**: Enjoy a seamless experience across various devices and screen sizes. Access CineHub from desktop, laptop, tablet, or mobile devices with a user-friendly interface.
 
+## Preview
+
+![](https://github.com/guilhermevialle/CineHub/blob/main/preview/cinehub_preview.gif)
+
 ## Technologies Used
 
 - **Next.js**
